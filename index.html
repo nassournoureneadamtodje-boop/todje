@@ -1469,6 +1469,11 @@
     </div>
 
     <script>
+        const API_BASE = "https://todje-api.onrender.com";
+            fetch(API_BASE + "/")
+             .then(res => res.json())
+             .then(data => console.log("Backend OK :", data))
+             .catch(err => console.error("Erreur backend :", err));
         // ===== VARIABLES GLOBALES =====
         let currentModalMode = 'inscription';
         let currentFilter = 'all';
@@ -1600,8 +1605,55 @@
             }
         }
 
-        function handleAuthSubmit(event) {
-            event.preventDefault();
+        async function handleAuthSubmit(event) {
+  event.preventDefault();
+
+  const nom = document.getElementById('nom').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+
+  const submitBtn = document.getElementById('modalSubmitBtn');
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent = 'Chargement...';
+  submitBtn.disabled = true;
+
+  try {
+    if (currentModalMode === 'inscription') {
+      const userType = document.getElementById('userType')?.value || 'client';
+
+      const res = await fetch(API_BASE + "/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: nom, email, password, userType })
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur inscription");
+
+      showNotification(`✅ ${data.message}`, 'success');
+      closeModal();
+
+    } else {
+      const res = await fetch(API_BASE + "/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur connexion");
+
+      showNotification(`✅ Bienvenue ${data.name}`, 'success');
+      closeModal();
+    }
+
+  } catch (err) {
+    showNotification(`❌ ${err.message}`, 'info');
+  } finally {
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  }
+}
             
             const nom = document.getElementById('nom').value;
             const email = document.getElementById('email').value;
@@ -1623,7 +1675,7 @@
                 submitBtn.disabled = false;
                 closeModal();
             }, 1000);
-        }
+        
 
         // ===== NOTIFICATIONS =====
         function showNotification(message, type = 'info') {
