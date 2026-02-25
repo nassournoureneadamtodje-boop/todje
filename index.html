@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Todje - Plateforme de services freelance au Rwanda et au Tchad. Trouvez des développeurs, designers, traders et étudiants.">
+    <meta name="keywords" content="freelance, Rwanda, Tchad, développeurs, designers, traders, étudiants, services">
+    <meta name="author" content="Nassour235">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Todje - Services freelance au Rwanda & Tchad">
+    <meta property="og:description" content="Plateforme de services freelance pour développeurs, designers, traders et étudiants">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:url" content="https://nassour235.github.io/todje">
+    
+    <title>Todje - Services freelance au Rwanda & Tchad</title>
+    
+    <style>
+        /* ===== VARIABLES GLOBALES ===== */
+        :root {
+            --primary-color: #1a3e4c;
+            --secondary-color: #2a5f72;
+            --accent-color: #ffb347;
+            --accent-hover: #ff9f1c;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --bg-light: #f8f9fa;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --shadow-hover: 0 10px 25px rgba(0,0,0,0.15);
+            --transition: all 0.3s ease;
+        }
+
+        /* ===== RESET ET STYLES DE BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            display: block;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== BOUTONS ===== */
+        .btn {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.6rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-outline-light {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* ===== MENU MOBILE ===== */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            width: 30px;
+            height: 3px;
+            background-color: var(--white);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary-color);
+            padding: 1rem;
+            z-index: 99;
+            box-shadow: var(--shadow);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .mobile-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        /* Barre de recherche */
+        .search-bar {
+            max-width: 600px;
+            margin: 2rem auto;
+            display: flex;
+            gap: 0.5rem;
+            animation: fadeIn 1s ease 0.4s both;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 179, 71, 0.3);
+        }
+
+        .search-bar button {
+            padding: 1rem 2rem;
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .search-bar button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Statistiques */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            animation: fadeIn 1s ease 0.6s both;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            color: var(--accent-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===== CATEGORIES ===== */
+        .categories {
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .categories h3 {
+            font-size: clamp(1.8rem, 4vw, 2rem);
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-icon {
+            transform: scale(1.1);
+            background-color: var(--accent-color);
+        }
+
+        .category-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .category-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            padding: 4rem 5%;
+            background-color: var(--white);
+        }
+
+        .services h3 {
+            font-size: clamp(1.8rem, 4vw, 2rem);
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        /* Boutons de filtre */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Grille des services */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-image {
+            height: 160px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+
+        .service-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .seller-info {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .seller-details h5 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+            color: var(--text-dark);
+        }
+
+        .seller-details p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .service-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .rating {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .rating span {
+            color: var(--text-light);
+            margin-left: 0.5rem;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price small {
+            font-size: 0.9rem;
+            font-weight: normal;
+            color: var(--text-light);
+        }
+
+        /* Message aucun résultat */
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            display: none;
+        }
+
+        .no-results.show {
+            display: block;
+        }
+
+        /* ===== COMMENT ÇA MARCHE ===== */
+        .how-it-works {
+            padding: 4rem 5%;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .how-it-works h3 {
+            font-size: clamp(1.8rem, 4vw, 2rem);
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+            transition: var(--transition);
+        }
+
+        .step:hover .step-number {
+            transform: scale(1.1);
+        }
+
+        .step h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .step p {
+            color: var(--text-light);
+        }
+
+        /* ===== TÉMOIGNAGES ===== */
+        .testimonials {
+            padding: 4rem 5%;
+            background-color: var(--white);
+        }
+
+        .testimonials h3 {
+            font-size: clamp(1.8rem, 4vw, 2rem);
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-author h5 {
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-author p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ===== APPEL À L'ACTION ===== */
+        .cta {
+            padding: 4rem 5%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta h3 {
+            font-size: clamp(1.8rem, 4vw, 2rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 5% 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info i {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .developer-credit {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .developer-credit a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .developer-credit a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideIn 0.3s ease;
+        }
+
+        .close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            background: none;
+            border: none;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .close:hover {
+            color: var(--primary-color);
+            background-color: var(--bg-light);
+        }
+
+        .modal h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .modal input,
+        .modal select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .modal input:focus,
+        .modal select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(255, 179, 71, 0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .modal-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .modal-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .modal-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== NOTIFICATIONS ===== */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 2rem;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 2000;
+            animation: slideInRight 0.3s ease;
+        }
+
+        .notification-success {
+            background-color: #4CAF50;
+        }
+
+        .notification-info {
+            background-color: #2196F3;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: row;
+                padding: 1rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .auth-buttons {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-bar {
+                flex-direction: column;
+            }
+
+            .search-bar button {
+                width: 100%;
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-btn {
+                width: 100%;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ===== LOADING STATE ===== */
+        .loading {
+            opacity: 0.5;
+            pointer-events: none;
+            position: relative;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            margin-left: -15px;
+            margin-top: -15px;
+            border: 3px solid var(--accent-color);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="logo">
+            <h1>Todje<span>by Nassour235</span></h1>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#comment-ca-marche">Comment ça marche</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="auth-buttons">
+            <button class="btn" id="btnInscription">S'inscrire</button>
+            <button class="btn btn-outline" id="btnConnexion">Se connecter</button>
+        </div>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- ===== MENU MOBILE ===== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#accueil" class="mobile-nav-link">Accueil</a></li>
+            <li><a href="#services" class="mobile-nav-link">Services</a></li>
+            <li><a href="#comment-ca-marche" class="mobile-nav-link">Comment ça marche</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+            <li><button class="btn" onclick="openModal('inscription')">S'inscrire</button></li>
+            <li><button class="btn btn-outline" onclick="openModal('connexion')">Se connecter</button></li>
+        </ul>
+    </div>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <h2>Trouvez le freelance parfait au Rwanda & Tchad</h2>
+            <p>Développeurs, designers, traders et étudiants proposent leurs services</p>
+            
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Que cherchez-vous ? (ex: création de site web, logo, formation...)">
+                <button onclick="searchServices()">Rechercher</button>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Freelances</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">1000+</span>
+                    <span class="stat-label">Services</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Catégories</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CATEGORIES ===== -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h3>Nos catégories populaires</h3>
+            <div class="category-grid">
+                <div class="category-card" onclick="filterServices('developpeur')">
+                    <div class="category-icon">💻</div>
+                    <h4>Développeurs</h4>
+                    <p>Sites web, applications, logiciels</p>
+                </div>
+                <div class="category-card" onclick="filterServices('designer')">
+                    <div class="category-icon">🎨</div>
+                    <h4>Designers</h4>
+                    <p>Logos, UI/UX, graphisme</p>
+                </div>
+                <div class="category-card" onclick="filterServices('trader')">
+                    <div class="category-icon">📈</div>
+                    <h4>Traders</h4>
+                    <p>Conseils en investissement, trading</p>
+                </div>
+                <div class="category-card" onclick="filterServices('etudiant')">
+                    <div class="category-icon">📚</div>
+                    <h4>Étudiants</h4>
+                    <p>Cours particuliers, aide aux devoirs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="services" id="services">
+        <div class="container">
+            <h3>Services populaires</h3>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterServices('all')">Tous</button>
+                <button class="filter-btn" onclick="filterServices('developpeur')">Développeurs</button>
+                <button class="filter-btn" onclick="filterServices('designer')">Designers</button>
+                <button class="filter-btn" onclick="filterServices('trader')">Traders</button>
+                <button class="filter-btn" onclick="filterServices('etudiant')">Étudiants</button>
+            </div>
+
+            <div class="service-grid" id="service-grid">
+                <!-- Service 1 -->
+                <div class="service-card" data-category="developpeur">
+                    <div class="service-image">
+                        💻
+                        <span class="service-badge">⭐ 4.9</span>
+                    </div>
+                    <div class="service-content">
+                        <div class="seller-info">
+                            <div class="avatar">JM</div>
+                            <div class="seller-details">
+                                <h5>Jean M.</h5>
+                                <p>Développeur Full Stack</p>
+                            </div>
+                        </div>
+                        <h4 class="service-title">Création de site web professionnel</h4>
+                        <div class="rating">
+                            ★★★★★ <span>(124 avis)</span>
+                        </div>
+                        <div class="price">
+                            50,000 RWF <small>à partir de</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card" data-category="designer">
+                    <div class="service-image">
+                        🎨
+                        <span class="service-badge">⭐ 4.8</span>
+                    </div>
+                    <div class="service-content">
+                        <div class="seller-info">
+                            <div class="avatar">AS</div>
+                            <div class="seller-details">
+                                <h5>Alice S.</h5>
+                                <p>Designer Graphique</p>
+                            </div>
+                        </div>
+                        <h4 class="service-title">Création de logo moderne</h4>
+                        <div class="rating">
+                            ★★★★☆ <span>(89 avis)</span>
+                        </div>
+                        <div class="price">
+                            35,000 RWF <small>à partir de</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card" data-category="trader">
+                    <div class="service-image">
+                        📈
+                        <span class="service-badge">⭐ 4.7</span>
+                    </div>
+                    <div class="service-content">
+                        <div class="seller-info">
+                            <div class="avatar">PK</div>
+                            <div class="seller-details">
+                                <h5>Pierre K.</h5>
+                                <p>Trader professionnel</p>
+                            </div>
+                        </div>
+                        <h4 class="service-title">Conseils en trading et analyse</h4>
+                        <div class="rating">
+                            ★★★★☆ <span>(56 avis)</span>
+                        </div>
+                        <div class="price">
+                            45,000 RWF <small>par session</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card" data-category="etudiant">
+                    <div class="service-image">
+                        📚
+                        <span class="service-badge">⭐ 4.9</span>
+                    </div>
+                    <div class="service-content">
+                        <div class="seller-info">
+                            <div class="avatar">MN</div>
+                            <div class="seller-details">
+                                <h5>Marie N.</h5>
+                                <p>Étudiante en Master</p>
+                            </div>
+                        </div>
+                        <h4 class="service-title">Cours de mathématiques</h4>
+                        <div class="rating">
+                            ★★★★★ <span>(67 avis)</span>
+                        </div>
+                        <div class="price">
+                            15,000 RWF <small>par heure</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card" data-category="developpeur">
+                    <div class="service-image">
+                        📱
+                        <span class="service-badge">⭐ 4.8</span>
+                    </div>
+                    <div class="service-content">
+                        <div class="seller-info">
+                            <div class="avatar">DT</div>
+                            <div class="seller-details">
+                                <h5>David T.</h5>
+                                <p>Développeur Mobile</p>
+                            </div>
+                        </div>
+                        <h4 class="service-title">Application Android/iOS</h4>
+                        <div class="rating">
+                            ★★★★☆ <span>(42 avis)</span>
+                        </div>
+                        <div class="price">
+                            150,000 RWF <small>à partir de</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card" data-category="designer">
+                    <div class="service-image">
+                        ✨
+                        <span class="service-badge">⭐ 4.6</span>
+                    </div>
+                    <div class="service-content">
+                        <div class="seller-info">
+                            <div class="avatar">CB</div>
+                            <div class="seller-details">
+                                <h5>Claire B.</h5>
+                                <p>UI/UX Designer</p>
+                            </div>
+                        </div>
+                        <h4 class="service-title">Refonte d'interface utilisateur</h4>
+                        <div class="rating">
+                            ★★★★☆ <span>(38 avis)</span>
+                        </div>
+                        <div class="price">
+                            60,000 RWF <small>à partir de</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="no-results" id="noResults">
+                <p>Aucun service trouvé pour votre recherche.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COMMENT ÇA MARCHE ===== -->
+    <section class="how-it-works" id="comment-ca-marche">
+        <div class="container">
+            <h3>Comment ça marche ?</h3>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Créez un compte</h4>
+                    <p>Inscrivez-vous gratuitement en tant que client ou freelance</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Publiez ou trouvez un service</h4>
+                    <p>Proposez vos services ou trouvez le freelance idéal</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Collaborez et payez en sécurité</h4>
+                    <p>Notre plateforme sécurise vos paiements jusqu'à la livraison</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TÉMOIGNAGES ===== -->
+    <section class="testimonials">
+        <div class="container">
+            <h3>Ce que disent nos utilisateurs</h3>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Grâce à Todje, j'ai trouvé un développeur talentueux pour mon site e-commerce. Service rapide et professionnel !"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="avatar">MK</div>
+                        <div>
+                            <h5>Marie K.</h5>
+                            <p>Entrepreneure, Kigali</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"En tant qu'étudiant, je gagne de l'argent en donnant des cours particuliers. La plateforme est très facile à utiliser."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="avatar">PA</div>
+                        <div>
+                            <h5>Paul A.</h5>
+                            <p>Étudiant, N'Djamena</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== APPEL À L'ACTION ===== -->
+    <section class="cta">
+        <div class="container">
+            <h3>Prêt à commencer ?</h3>
+            <p>Rejoignez notre communauté de freelances et clients dès aujourd'hui</p>
+            <div class="cta-buttons">
+                <button class="btn btn-large" onclick="openModal('inscription')">Devenir freelance</button>
+                <button class="btn btn-large btn-outline-light" onclick="openModal('inscription')">Trouver un service</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Todje</h4>
+                    <p>La plateforme freelance pour le Rwanda et le Tchad. Trouvez des professionnels qualifiés près de chez vous.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#comment-ca-marche">Comment ça marche</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Catégories</h4>
+                    <ul>
+                        <li><a href="#" onclick="filterServices('developpeur'); return false;">Développeurs</a></li>
+                        <li><a href="#" onclick="filterServices('designer'); return false;">Designers</a></li>
+                        <li><a href="#" onclick="filterServices('trader'); return false;">Traders</a></li>
+                        <li><a href="#" onclick="filterServices('etudiant'); return false;">Étudiants</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li class="contact-info">
+                            <span>📧</span>
+                            <span>nassour235@todje.rw</span>
+                        </li>
+                        <li class="contact-info">
+                            <span>📞</span>
+                            <span>+250 793 226 597</span>
+                        </li>
+                        <li class="contact-info">
+                            <span>📍</span>
+                            <span>Kigali, Rwanda</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Todje by Nassour235. Tous droits réservés.</p>
+                <div class="social-links">
+                    <a href="https://github.com/nassour235" target="_blank" aria-label="GitHub">🐙</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="LinkedIn">💼</a>
+                    <a href="#" aria-label="WhatsApp" onclick="window.open('https://wa.me/250793226597')">📱</a>
+                </div>
+            </div>
+            <div class="developer-credit">
+                <p>Développé par <a href="https://github.com/nassour235" target="_blank">Nassour235</a> avec ❤️ pour le Rwanda et le Tchad</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== MODAL ===== -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal()" aria-label="Fermer">&times;</button>
+            <h3 id="modalTitle">S'inscrire</h3>
+            <form id="authForm" onsubmit="handleAuthSubmit(event)">
+                <div class="form-group">
+                    <input type="text" id="nom" placeholder="Nom complet" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Mot de passe" required>
+                </div>
+                <div class="form-group" id="userTypeGroup">
+                    <select id="userType" required>
+                        <option value="">Je suis...</option>
+                        <option value="client">Client</option>
+                        <option value="developpeur">Développeur</option>
+                        <option value="designer">Designer</option>
+                        <option value="trader">Trader</option>
+                        <option value="etudiant">Étudiant</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit" id="modalSubmitBtn">S'inscrire</button>
+            </form>
+            <div class="modal-link">
+                <a href="#" onclick="toggleModalMode(event)" id="toggleModalLink">Déjà un compte ? Se connecter</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== VARIABLES GLOBALES =====
+        let currentModalMode = 'inscription';
+        let currentFilter = 'all';
+
+        // ===== INITIALISATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+            setupEventListeners();
+        });
+
+        function initializeApp() {
+            filterServices('all');
+            addDataAttributes();
+        }
+
+        function addDataAttributes() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                const title = card.querySelector('.service-title')?.textContent || '';
+                const seller = card.querySelector('.seller-details h5')?.textContent || '';
+                card.dataset.title = title;
+                card.dataset.seller = seller;
+            });
+        }
+
+        function setupEventListeners() {
+            // Menu mobile
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            }
+            
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+            
+            // Boutons d'authentification
+            document.getElementById('btnInscription').addEventListener('click', () => openModal('inscription'));
+            document.getElementById('btnConnexion').addEventListener('click', () => openModal('connexion'));
+            
+            // Recherche
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        searchServices();
+                    }
+                });
+            }
+            
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId !== '#') {
+                        const target = document.querySelector(targetId);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // Fermeture avec Echap
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        }
+
+        // ===== MENU MOBILE =====
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const btn = document.getElementById('mobileMenuBtn');
+            mobileMenu.classList.toggle('active');
+            btn.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const btn = document.getElementById('mobileMenuBtn');
+            mobileMenu.classList.remove('active');
+            btn.classList.remove('active');
+        }
+
+        // ===== MODAL =====
+        function openModal(mode) {
+            currentModalMode = mode;
+            const modal = document.getElementById('authModal');
+            const title = document.getElementById('modalTitle');
+            const submitBtn = document.getElementById('modalSubmitBtn');
+            const toggleLink = document.getElementById('toggleModalLink');
+            const userTypeGroup = document.getElementById('userTypeGroup');
+            
+            if (mode === 'inscription') {
+                title.textContent = 'S\'inscrire sur Todje';
+                submitBtn.textContent = 'S\'inscrire';
+                toggleLink.textContent = 'Déjà un compte ? Se connecter';
+                userTypeGroup.style.display = 'block';
+            } else {
+                title.textContent = 'Se connecter à Todje';
+                submitBtn.textContent = 'Se connecter';
+                toggleLink.textContent = 'Pas encore de compte ? S\'inscrire';
+                userTypeGroup.style.display = 'none';
+            }
+            
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('authModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            document.getElementById('authForm').reset();
+        }
+
+        function toggleModalMode(event) {
+            event.preventDefault();
+            if (currentModalMode === 'inscription') {
+                openModal('connexion');
+            } else {
+                openModal('inscription');
+            }
+        }
+
+        function handleAuthSubmit(event) {
+            event.preventDefault();
+            
+            const nom = document.getElementById('nom').value;
+            const email = document.getElementById('email').value;
+            
+            const submitBtn = document.getElementById('modalSubmitBtn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Chargement...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                if (currentModalMode === 'inscription') {
+                    const userType = document.getElementById('userType')?.value || 'client';
+                    showNotification(`Inscription réussie ! Bienvenue sur Todje, ${nom} !`, 'success');
+                } else {
+                    showNotification(`Connexion réussie ! Bon retour parmi nous, ${nom} !`, 'success');
+                }
+                
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                closeModal();
+            }, 1000);
+        }
+
+        // ===== NOTIFICATIONS =====
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // ===== FILTRAGE =====
+        function filterServices(category) {
+            currentFilter = category;
+            const services = document.querySelectorAll('.service-card');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const noResults = document.getElementById('noResults');
+            let visibleCount = 0;
+            
+            filterBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (category === 'all' && btn.textContent.trim() === 'Tous') {
+                    btn.classList.add('active');
+                } else if (btn.textContent.toLowerCase().includes(category)) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            services.forEach(service => {
+                if (category === 'all' || service.dataset.category === category) {
+                    service.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    service.style.display = 'none';
+                }
+            });
+            
+            if (visibleCount === 0) {
+                noResults.classList.add('show');
+            } else {
+                noResults.classList.remove('show');
+            }
+        }
+
+        // ===== RECHERCHE =====
+        function searchServices() {
+            const searchInput = document.getElementById('searchInput');
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const services = document.querySelectorAll('.service-card');
+            const noResults = document.getElementById('noResults');
+            let resultsFound = 0;
+            
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            services.forEach(service => {
+                const title = service.dataset.title ? service.dataset.title.toLowerCase() : '';
+                const seller = service.dataset.seller ? service.dataset.seller.toLowerCase() : '';
+                const category = service.dataset.category ? service.dataset.category.toLowerCase() : '';
+                
+                if (searchTerm === '' || 
+                    title.includes(searchTerm) || 
+                    seller.includes(searchTerm) || 
+                    category.includes(searchTerm)) {
+                    service.style.display = 'block';
+                    resultsFound++;
+                } else {
+                    service.style.display = 'none';
+                }
+            });
+            
+            if (searchTerm !== '') {
+                if (resultsFound > 0) {
+                    noResults.classList.remove('show');
+                    showNotification(`${resultsFound} service(s) trouvé(s) pour "${searchTerm}"`, 'info');
+                } else {
+                    noResults.classList.add('show');
+                }
+            } else {
+                filterServices(currentFilter);
+            }
+        }
+
+        // ===== FERMETURE DU MODAL EN CLIQUANT À L'EXTÉRIEUR =====
+        window.onclick = function(event) {
+            const modal = document.getElementById('authModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // ===== RENDRE LES FONCTIONS ACCESSIBLES GLOBALEMENT =====
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+        window.toggleModalMode = toggleModalMode;
+        window.handleAuthSubmit = handleAuthSubmit;
+        window.filterServices = filterServices;
+        window.searchServices = searchServices;
+    </script>
+</body>
+</html>
